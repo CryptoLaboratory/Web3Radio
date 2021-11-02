@@ -3,7 +3,6 @@ library network_status;
 import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';
-import 'package:flutter/material.dart';
 
 class NetworkService {
   static final NetworkService _instance = NetworkService._privateConstructor();
@@ -21,7 +20,6 @@ class NetworkService {
   late Function _onNetworkReconnect;
 
   void init({
-    required BuildContext context,
     required Function onNetworkDisconnect,
     required Function onNetworkReconnect,
     Duration interval = const Duration(seconds: 5),

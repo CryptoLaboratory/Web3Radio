@@ -33,7 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
     NetworkService networkService = NetworkService();
 
     networkService.init(
-      context: context,
       onNetworkDisconnect: () {
         // Perform task on network disconnect
       },
