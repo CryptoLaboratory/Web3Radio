@@ -11,8 +11,6 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   connectivity: ^3.0.6
-  universaltoastr: 
-    git: https://github.com/Flutter-Postal-Service/universal-toastr.git
 
 dev_dependencies:
   flutter_test:

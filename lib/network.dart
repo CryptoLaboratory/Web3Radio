@@ -1,3 +1,5 @@
+library network_status;
+
 import 'dart:async';
 
 import 'package:connectivity/connectivity.dart';

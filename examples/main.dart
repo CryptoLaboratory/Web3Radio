@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:network_status/network.dart';
-import 'package:universaltoastr/universaltoastr.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,23 +31,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     NetworkService networkService = NetworkService();
-    UniversalToastr _universalToastr = UniversalToastr().init(context);
 
     networkService.init(
       context: context,
       onNetworkDisconnect: () {
-        _universalToastr.show(
-          message: 'Connection was lost',
-          duration: const Duration(seconds: 2),
-          success: false,
-        );
+        // Perform task on network disconnect
       },
       onNetworkReconnect: () {
-        _universalToastr.show(
-          message: 'Connected',
-          duration: const Duration(seconds: 2),
-          success: true,
-        );
+        // Perform task on network
       },
     );
     networkService.startConnectionService();
