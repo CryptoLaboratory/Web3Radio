@@ -15,16 +15,14 @@ class NetworkService {
   bool _isConnected = true;
   bool get isConnected => _isConnected;
 
-  Duration _interval = const Duration(seconds: 3);
+  final Duration _interval = const Duration(seconds: 3);
   Function? _onNetworkDisconnect;
   Function? _onNetworkReconnect;
 
   void init({
     required Function onNetworkDisconnect,
     required Function onNetworkReconnect,
-    Duration interval = const Duration(seconds: 3),
   }) {
-    _interval = interval;
     _onNetworkDisconnect = onNetworkDisconnect;
     _onNetworkReconnect = onNetworkReconnect;
   }
@@ -36,14 +34,13 @@ class NetworkService {
         ConnectivityResult res = await Connectivity().checkConnectivity();
 
         if (_isConnected && res == ConnectivityResult.none) {
-          if(_onNetworkDisconnect != null) {
-            _onNetworkDisconnect!();
-          }
+
+          _onNetworkDisconnect?.call();
           _isConnected = false;
+
         } else if (!_isConnected && res != ConnectivityResult.none) {
-          if(_onNetworkReconnect != null) {
-            _onNetworkReconnect!();
-          }
+
+          _onNetworkReconnect?.call();
           _isConnected = true;
         }
       },
