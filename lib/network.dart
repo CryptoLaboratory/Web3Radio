@@ -22,7 +22,7 @@ class NetworkService {
   void init({
     required Function onNetworkDisconnect,
     required Function onNetworkReconnect,
-    Duration interval = const Duration(seconds: 5),
+    Duration interval = const Duration(seconds: 3),
   }) {
     _interval = interval;
     _onNetworkDisconnect = onNetworkDisconnect;
