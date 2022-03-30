@@ -27,19 +27,19 @@ class NetworkService {
     _onNetworkReconnect = onNetworkReconnect;
   }
 
-  void startConnectionService() {
+  Future<void> startConnectionService() async {
+    ConnectivityResult res = await Connectivity().checkConnectivity();
+    _isConnected = (res != ConnectivityResult.none);
+
     Timer.periodic(
       _interval,
       (Timer t) async {
         ConnectivityResult res = await Connectivity().checkConnectivity();
 
         if (_isConnected && res == ConnectivityResult.none) {
-
           _onNetworkDisconnect?.call();
           _isConnected = false;
-
         } else if (!_isConnected && res != ConnectivityResult.none) {
-
           _onNetworkReconnect?.call();
           _isConnected = true;
         }
